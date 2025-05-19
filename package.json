@@ -1,0 +1,9 @@
+{
+  "name": "explore-africa-root",
+  "version": "1.0.0",
+  "description": "Root package for Explore Africa project",
+  "scripts": {
+    "build": "cd project && npm install && npm run build"
+  },
+  "private": true
+}
