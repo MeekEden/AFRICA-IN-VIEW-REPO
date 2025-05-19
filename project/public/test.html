@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netlify Deployment Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #333;
+    }
+    .test-image {
+      max-width: 100%;
+      height: auto;
+      margin: 20px 0;
+      border: 1px solid #ddd;
+    }
+    .success {
+      color: green;
+      font-weight: bold;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Netlify Deployment Test</h1>
+  <p>If you can see this page, your static file serving is working correctly.</p>
+  
+  <h2>Image Loading Test</h2>
+  <p>Testing if Cloudinary images can load:</p>
+  <img src="https://res.cloudinary.com/doxgry3tq/image/upload/v1747438877/Virunga_National_Park_ov20m0.jpg" alt="Virunga National Park" class="test-image">
+  
+  <h2>API Test</h2>
+  <p>Testing if Netlify Functions are working:</p>
+  <div id="api-result">Checking API status...</div>
+
+  <script>
+    // Test the API
+    fetch('/.netlify/functions/status')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('api-result').innerHTML = 
+          `<span class="success">Success! API returned: ${JSON.stringify(data)}</span>`;
+      })
+      .catch(error => {
+        document.getElementById('api-result').innerHTML = 
+          `<span class="error">Error: ${error.message}</span>`;
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./globe.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Modified Security Headers for file:// protocol -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self' file: data: blob: https:;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' file: blob: https:;
+      style-src 'self' 'unsafe-inline' file: blob: https:;
+      img-src 'self' file: data: blob: https: https://res.cloudinary.com https://flagcdn.com https://s3.amazonaws.com https://cloudfront.safaribookings.com;
+      font-src 'self' file: data: blob: https:;
+      connect-src 'self' file: data: blob: https: https://ipapi.co https://api.exchangerate-api.com;
+      frame-src 'self' file: data: blob: https: https://www.youtube.com https://player.vimeo.com;
+    ">
+
+    <title>Explore Africa - Discover the Beauty of the African Continent</title>
+    <meta name="description" content="Explore Africa is a comprehensive guide to all 54 African countries, featuring detailed information about their geography, economy, tourist attractions, and more." />
+
+    <!-- Base path for all relative URLs -->
+    <base href="./">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./src/main.tsx"></script>
+
+    <!-- Fallback script if module loading fails -->
+    <script>
+      window.addEventListener('error', function(e) {
+        if (e.target.tagName === 'SCRIPT' && e.target.src.includes('main.tsx')) {
+          console.error('Failed to load module script. This is expected when opening directly from the file system.');
+
+          // Check if we're running from file:// protocol
+          if (window.location.protocol === 'file:') {
+            // Create a message element
+            var messageEl = document.createElement('div');
+            messageEl.style.maxWidth = '800px';
+            messageEl.style.margin = '50px auto';
+            messageEl.style.padding = '20px';
+            messageEl.style.backgroundColor = '#f8d7da';
+            messageEl.style.color = '#721c24';
+            messageEl.style.borderRadius = '5px';
+            messageEl.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+            messageEl.style.lineHeight = '1.5';
+
+            messageEl.innerHTML = `
+              <h2 style="margin-top: 0;">Browser Security Restriction</h2>
+              <p>This application cannot be loaded directly from the file system due to browser security restrictions.</p>
+              <p><strong>To view this application, you have two options:</strong></p>
+              <ol>
+                <li>
+                  <strong>Use a local web server (recommended):</strong>
+                  <ul>
+                    <li>Open a command prompt in this folder</li>
+                    <li>Run: <code style="background: #eee; padding: 2px 4px;">npx serve</code></li>
+                    <li>Open the URL shown in the command output (usually http://localhost:3000)</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Use the built version:</strong>
+                  <ul>
+                    <li>Run <code style="background: #eee; padding: 2px 4px;">npm run build</code> to create a production build</li>
+                    <li>Open the <code style="background: #eee; padding: 2px 4px;">dist/index.html</code> file in your browser</li>
+                  </ul>
+                </li>
+              </ol>
+              <p>If you're specifically trying to view the updated images, you can open one of these files:</p>
+              <ul>
+                <li><a href="./explore-africa-standalone.html" style="color: #0066cc;">explore-africa-standalone.html</a> - Standalone version with the updated images</li>
+                <li><a href="./images-only.html" style="color: #0066cc;">images-only.html</a> - Simple gallery of just the images</li>
+              </ul>
+            `;
+
+            document.body.appendChild(messageEl);
+          }
+        }
+      }, true);
+    </script>
+  </body>
+</html>
