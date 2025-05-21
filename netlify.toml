@@ -1,7 +1,13 @@
 [build]
   base = "project"
   command = "npm run build"
-  publish = "project/dist"
+  publish = "dist"
+
+[dev]
+  command = "npm run dev" # Command to start your dev server
+  port = 3000 # Port that the dev server will be accessible on
+  publish = "dist" # Directory to serve files from
+  framework = "vite" # Specify the framework you're using
 
 # Handle SPA routing
 [[redirects]]

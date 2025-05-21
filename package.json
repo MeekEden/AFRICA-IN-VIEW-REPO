@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Root package for Explore Africa project",
   "scripts": {
-    "build": "cd project && npm install && npm run build"
+    "build": "bash build.sh"
   },
   "private": true
 }
